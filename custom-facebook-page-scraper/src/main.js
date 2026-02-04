@@ -74,21 +74,9 @@ async function main() {
     if (!requestQueueRef) throw new Error('requestQueueRef is required.');
 
     // Open queue by ID or by Name (resolve ID -> name when possible)
-    const client = Actor.apifyClient;
-    async function openQueueByRef(ref) {
-      try {
-        const q = await client.requestQueue(ref).get();
-        if (q?.name) {
-          log.info(`Resolved queue id '${ref}' to name '${q.name}'`);
-          return Actor.openRequestQueue(q.name);
-        }
-      } catch (err) {
-        if (!(err?.statusCode === 404)) throw err;
-      }
-      log.info(`Opening queue by name '${ref}'`);
-      return Actor.openRequestQueue(ref);
-    }
-    const requestQueue = await openQueueByRef(requestQueueRef);
+    // Open queue by ID or Name (SDK handles it)
+    log.info(`Opening queue by ref '${requestQueueRef}'`);
+    const requestQueue = await Actor.openRequestQueue(requestQueueRef);
 
     const rqInfoBefore = await requestQueue.getInfo();
     const queuedBefore = {
@@ -205,12 +193,12 @@ async function main() {
         const facebookId = extractFacebookId($);
 
         const item = {
-          facebookId: facebookId ?? null,
-          profileUrl: canonicalUrl ?? request.url,
+          pageId: facebookId ?? null,
+          pageUrl: canonicalUrl ?? request.url,
           url: rawUrl ?? canonicalUrl ?? request.url,
           pageName: pageName ?? null,
           likes: likes ?? null,
-          introduction: introduction ?? null,
+          intro: introduction ?? null,
           scrapedAt: now,
           sourceRunId: Actor.getEnv().actorRunId,
           searchTerm: searchTerm ?? null,
@@ -226,7 +214,7 @@ async function main() {
           crawlLog.warning(`Could not mark handled (missing qid) for ${request.url}`);
         }
 
-        const aboutLen = item.introduction ? String(item.introduction).length : 0;
+        const aboutLen = item.intro ? String(item.intro).length : 0;
         crawlLog.info(
           `OK: ${item.profileUrl} (name="${item.pageName ?? ''}", likes=${item.likes ?? 'null'}, aboutLen=${aboutLen})`,
         );

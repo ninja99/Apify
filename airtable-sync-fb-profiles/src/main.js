@@ -108,9 +108,9 @@ try {
 
   // Dataset field keys (runtime defaults; you can override via datasetFields)
   const df = {
-    facebookId: 'facebookId',
-    profileUrl: ['profileUrl', 'url', 'fbProfileUrl', 'profile_url'],
-    name: ['name', 'businessName', 'pageName'],
+    facebookId: ['pageId', 'facebookId'],
+    profileUrl: ['pageUrl', 'profileUrl', 'url', 'fbProfileUrl', 'profile_url'],
+    name: ['pageName', 'name', 'businessName'],
     email: 'email',
     phone: 'phone',
     rating: 'rating',
@@ -122,7 +122,7 @@ try {
     location: 'location',
     likes: 'likes',
     isVerified: ['isVerified', 'verified'],
-    introduction: 'introduction',
+    introduction: ['intro', 'introduction'],
     businessHours: 'businessHours',
     linkedinUrl: 'linkedinUrl',
     instagramUrl: 'instagramUrl',
@@ -157,7 +157,7 @@ try {
   if (!runRecord) {
     throw new Error(
       `Run Log record not found for Run ID='${runInfo.runId}'. ` +
-        `Ensure your Run Log integration created the row before sync.`
+      `Ensure your Run Log integration created the row before sync.`
     );
   }
 
@@ -372,7 +372,7 @@ try {
 
   console.log(
     `Airtable Sync FB Profiles summary: processed=${processed}, ` +
-      `created=${created}, updated=${updated}, skipped=${skipped}`
+    `created=${created}, updated=${updated}, skipped=${skipped}`
   );
 
   await Actor.setValue('SYNC_SUMMARY', summary);

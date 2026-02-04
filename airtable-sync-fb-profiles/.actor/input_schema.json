@@ -4,10 +4,14 @@
   "schemaVersion": 1,
   "properties": {
     "sourceDatasetId": {
-      "title": "Source dataset ID",
+      "title": "Source Dataset",
       "type": "string",
-      "description": "Dataset ID produced by the facebook-pages-scraper run.",
-      "editor": "textfield"
+      "description": "Select the Dataset from the facebook-pages-scraper run.",
+      "editor": "resourcePicker",
+      "resourceType": "dataset",
+      "resourcePermissions": [
+        "READ"
+      ]
     },
     "airtable": {
       "title": "Airtable",
@@ -58,7 +62,9 @@
           "editor": "textfield"
         }
       },
-      "required": ["baseId"]
+      "required": [
+        "baseId"
+      ]
     },
     "runInfo": {
       "title": "Run info (from scraper)",
@@ -96,7 +102,9 @@
           "editor": "json"
         }
       },
-      "required": ["runId"]
+      "required": [
+        "runId"
+      ]
     },
     "maxItems": {
       "title": "Max items to process (optional)",
@@ -104,5 +112,9 @@
       "description": "Process at most this many items from the dataset (useful for smoke tests)."
     }
   },
-  "required": ["sourceDatasetId", "airtable", "runInfo"]
+  "required": [
+    "sourceDatasetId",
+    "airtable",
+    "runInfo"
+  ]
 }

@@ -4,10 +4,15 @@
   "schemaVersion": 1,
   "properties": {
     "requestQueueRef": {
-      "title": "Request Queue (name or ID)",
+      "title": "Request Queue",
       "type": "string",
-      "description": "Name (recommended) or ID of the Request Queue to consume.",
-      "editor": "textfield"
+      "description": "Select the Request Queue to consume URLs from.",
+      "editor": "resourcePicker",
+      "resourceType": "requestQueue",
+      "resourcePermissions": [
+        "READ",
+        "WRITE"
+      ]
     },
     "maxRequestsPerCrawl": {
       "title": "Max requests per crawl",
@@ -20,7 +25,9 @@
       "type": "array",
       "description": "Optional Apify proxy groups, e.g. [\"RESIDENTIAL\"].",
       "editor": "json",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
     "proxyCountryCode": {
       "title": "Proxy country code",
@@ -30,5 +37,7 @@
       "default": "US"
     }
   },
-  "required": ["requestQueueRef"]
+  "required": [
+    "requestQueueRef"
+  ]
 }

@@ -3,8 +3,10 @@
   "name": "dataset-to-request-queue-bridge",
   "title": "Dataset to Request Queue Bridge",
   "description": "Moves URLs from a dataset into a persistent Request Queue with deduplication. Writes per-URL status and a run summary.",
-  "version": "0.0.10",
-  "meta": { "templateId": "js-start" },
+  "version": "0.1",
+  "meta": {
+    "templateId": "js-start"
+  },
   "input": "./input_schema.json",
   "dockerfile": "./Dockerfile"
 }
