@@ -1,0 +1,14 @@
+{
+  "name": "airtable-sync-fb-profiles",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Upserts Master Profile List by facebookId, appends Run Log link, sets Status, and writes a summary.",
+  "engines": { "node": ">=18.0.0" },
+  "dependencies": {
+    "apify": "^3.4.5"
+  },
+  "scripts": {
+    "start": "node ./src/main.js"
+  },
+  "license": "ISC"
+}

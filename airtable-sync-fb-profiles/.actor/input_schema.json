@@ -1,0 +1,108 @@
+{
+  "title": "Airtable Sync FB Profiles - Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "sourceDatasetId": {
+      "title": "Source dataset ID",
+      "type": "string",
+      "description": "Dataset ID produced by the facebook-pages-scraper run.",
+      "editor": "textfield"
+    },
+    "airtable": {
+      "title": "Airtable",
+      "type": "object",
+      "description": "Configuration of your Airtable base and target tables.",
+      "editor": "json",
+      "properties": {
+        "baseId": {
+          "title": "Base ID",
+          "type": "string",
+          "description": "Your Airtable base ID (starts with 'app').",
+          "editor": "textfield"
+        },
+        "runTable": {
+          "title": "Run Log table name",
+          "type": "string",
+          "description": "Table name that stores one record per scraper run.",
+          "editor": "textfield"
+        },
+        "profileTable": {
+          "title": "Master Profile List table name",
+          "type": "string",
+          "description": "Table name that stores deduplicated Facebook profiles.",
+          "editor": "textfield"
+        },
+        "profileKeyFieldName": {
+          "title": "Profile merge key field (Airtable)",
+          "type": "string",
+          "description": "Airtable field used as the upsert/merge key (e.g., 'Facebook ID').",
+          "editor": "textfield"
+        },
+        "linkFieldName": {
+          "title": "Link field (Master to Run Log)",
+          "type": "string",
+          "description": "Linked-record field on Master Profile List that links to Run Log (must allow multiple).",
+          "editor": "textfield"
+        },
+        "statusFieldName": {
+          "title": "Status field name",
+          "type": "string",
+          "description": "Single-select field on Master Profile List to track profile processing state.",
+          "editor": "textfield"
+        },
+        "statusComplete": {
+          "title": "Status label for completed scrape",
+          "type": "string",
+          "description": "Exact single-select option to set on successful profile upsert.",
+          "editor": "textfield"
+        }
+      },
+      "required": ["baseId"]
+    },
+    "runInfo": {
+      "title": "Run info (from scraper)",
+      "type": "object",
+      "description": "Metadata for the scraper run used to find the Run Log record for linking.",
+      "editor": "json",
+      "properties": {
+        "runId": {
+          "type": "string",
+          "title": "Scraper Run ID",
+          "description": "The Apify run ID of the facebook-pages-scraper run that produced this dataset.",
+          "editor": "textfield"
+        },
+        "actorName": {
+          "type": "string",
+          "title": "Actor name",
+          "description": "Optional; name of the actor that produced the dataset.",
+          "editor": "textfield"
+        },
+        "finishedAt": {
+          "type": "string",
+          "title": "Finished at",
+          "description": "Optional; ISO datetime when the scraper run finished.",
+          "editor": "textfield"
+        },
+        "urlsFound": {
+          "type": "integer",
+          "title": "URLs found",
+          "description": "Optional; count of dataset items, for logging only."
+        },
+        "params": {
+          "type": "object",
+          "title": "Run parameters",
+          "description": "Optional; input JSON of the scraper run (stored for audit).",
+          "editor": "json"
+        }
+      },
+      "required": ["runId"]
+    },
+    "maxItems": {
+      "title": "Max items to process (optional)",
+      "type": "integer",
+      "description": "Process at most this many items from the dataset (useful for smoke tests)."
+    }
+  },
+  "required": ["sourceDatasetId", "airtable", "runInfo"]
+}

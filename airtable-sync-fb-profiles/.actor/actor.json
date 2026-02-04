@@ -1,0 +1,10 @@
+{
+  "actorSpecification": 1,
+  "name": "airtable-sync-fb-profiles",
+  "title": "Airtable Sync FB Profiles",
+  "description": "Upserts Master Profile List by facebookId, appends Run Log link, and sets Status = Scrape Complete. Designed for Apify SDK 3.4.5 and Airtable Team plan.",
+  "version": "0.0.1",
+  "meta": { "templateId": "js-start" },
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile"
+}

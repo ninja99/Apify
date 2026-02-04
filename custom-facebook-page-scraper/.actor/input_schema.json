@@ -1,0 +1,34 @@
+{
+  "title": "Custom FB Scraper Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "requestQueueRef": {
+      "title": "Request Queue (name or ID)",
+      "type": "string",
+      "description": "Name (recommended) or ID of the Request Queue to consume.",
+      "editor": "textfield"
+    },
+    "maxRequestsPerCrawl": {
+      "title": "Max requests per crawl",
+      "type": "integer",
+      "description": "Safety cap for how many URLs to process in this run.",
+      "editor": "number"
+    },
+    "proxyGroups": {
+      "title": "Proxy groups",
+      "type": "array",
+      "description": "Optional Apify proxy groups, e.g. [\"RESIDENTIAL\"].",
+      "editor": "json",
+      "items": { "type": "string" }
+    },
+    "proxyCountryCode": {
+      "title": "Proxy country code",
+      "type": "string",
+      "description": "ISO country code, e.g. \"US\".",
+      "editor": "textfield",
+      "default": "US"
+    }
+  },
+  "required": ["requestQueueRef"]
+}

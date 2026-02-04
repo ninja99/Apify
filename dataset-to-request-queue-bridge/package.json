@@ -1,0 +1,15 @@
+{
+  "name": "dataset-to-request-queue-bridge",
+  "version": "0.0.10",
+  "type": "module",
+  "description": "Bridge that moves URLs from a dataset into a Request Queue with dedup and instrumentation.",
+  "engines": { "node": ">=18.0.0" },
+  "dependencies": {
+    "apify": "^3.4.5"
+  },
+  "scripts": {
+    "start": "node ./src/main.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "license": "ISC"
+}

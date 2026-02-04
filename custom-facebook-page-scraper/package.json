@@ -1,0 +1,14 @@
+{
+  "name": "custom-facebook-page-scraper",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Scrapes FB page data from a Request Queue and pushes url/pageName/likes/about to the dataset.",
+  "engines": { "node": ">=18.0.0" },
+  "dependencies": {
+    "apify": "^3.4.5",
+    "crawlee": "^3.14.1"
+  },
+  "scripts": {
+    "start": "node ./src/main.js"
+  }
+}

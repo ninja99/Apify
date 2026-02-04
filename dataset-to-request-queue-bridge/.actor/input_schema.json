@@ -1,0 +1,51 @@
+{
+  "title": "Bridge Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "sourceDatasetId": {
+      "title": "Source dataset ID",
+      "type": "string",
+      "description": "The dataset ID that contains items with a URL field (e.g., 'graZ4sDnfcnr5rGV8').",
+      "editor": "textfield"
+    },
+    "targetRequestQueueRef": {
+      "title": "Target Request Queue (name or ID)",
+      "type": "string",
+      "description": "Queue name is recommended (e.g., 'fb-url-profiles'). You can also pass an ID; the actor will resolve it to a name.",
+      "editor": "textfield"
+    },
+    "urlFieldName": {
+      "title": "URL field in dataset",
+      "type": "string",
+      "description": "The field in the dataset item that holds the URL.",
+      "default": "url",
+      "editor": "textfield"
+    },
+    "statusDatasetName": {
+      "title": "Status dataset name",
+      "type": "string",
+      "description": "Dataset used to store per-URL statuses and the optional run summary.",
+      "default": "bridge-status",
+      "editor": "textfield"
+    },
+    "normalizeUrls": {
+      "title": "Normalize URLs for dedup",
+      "type": "boolean",
+      "description": "Strip tracking params and trailing slashes so duplicates deduplicate reliably.",
+      "default": true
+    },
+    "maxItems": {
+      "title": "Max items to process",
+      "type": "integer",
+      "description": "Optional limit for smoke tests (process at most this many items)."
+    },
+    "pushRunSummaryToDataset": {
+      "title": "Also write summary to dataset",
+      "type": "boolean",
+      "description": "If true, the run summary object will be appended to the status dataset.",
+      "default": true
+    }
+  },
+  "required": ["sourceDatasetId", "targetRequestQueueRef"]
+}

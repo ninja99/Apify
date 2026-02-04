@@ -1,0 +1,12 @@
+{
+  "actorSpecification": 1,
+  "name": "queue-janitor",
+  "title": "Request Queue Janitor (Invalids Only)",
+  "description": "Scans a request queue and deletes only null/empty/invalid URLs. No normalization, no dedupe.",
+  "version": "0.1",
+  "meta": {
+    "templateId": "js-start"
+  },
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile"
+}

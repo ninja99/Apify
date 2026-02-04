@@ -1,0 +1,10 @@
+{
+  "name": "queue-janitor-min",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Deletes only null/empty/invalid URLs from an Apify request queue.",
+  "engines": { "node": ">=18" },
+  "dependencies": { "apify": "^3.4.5" },
+  "scripts": { "start": "node ./src/main.js" },
+  "license": "ISC"
+}

@@ -1,0 +1,12 @@
+{
+  "actorSpecification": 1,
+  "name": "custom-facebook-page-scraper",
+  "title": "Custom Facebook Page Scraper",
+  "description": "Consumes a Request Queue (name or ID) and pushes minimal data (url, pageName, likes, about) to the dataset.",
+  "version": "0.1",
+  "meta": {
+    "templateId": "js-start"
+  },
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile"
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Janitor Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "queueRef": {
+      "title": "Request Queue (name or ID)",
+      "type": "string",
+      "description": "Name or ID of the Request Queue to clean (e.g. 'fb-url-profiles').",
+      "editor": "textfield"
+    },
+    "pageSize": {
+      "title": "Page size",
+      "type": "integer",
+      "description": "How many requests to scan per API page.",
+      "default": 500,
+      "editor": "number"
+    },
+    "maxScan": {
+      "title": "Max requests to scan",
+      "type": "integer",
+      "description": "Optional cap for smoke tests. Leave empty to scan the whole queue.",
+      "editor": "number"
+    },
+    "dryRun": {
+      "title": "Dry-run (no deletions)",
+      "type": "boolean",
+      "description": "If true, do not delete anything — only report what WOULD be deleted.",
+      "default": true,
+      "editor": "checkbox"
+    }
+  },
+  "required": ["queueRef"]
+}
